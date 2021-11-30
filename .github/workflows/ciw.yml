@@ -14,17 +14,20 @@ jobs:
 
 
     - name: test dotnet 
+      uses: actions/setup-dotnet@v1 # Adds a step to checkout the repository code
       with:
         dotnet-version: '6.0.x'
       run: dotnet test
 
     - name: typescript tests 
+      uses: actions/setup-dotnet@v1 # Adds a step to checkout the repository code
       with:
         dotnet-version: '6.0.x'
       working-directory: DotnetTemplate.Web
       run: npm t
 
     - name: typescript linter 
+      uses: actions/setup-dotnet@v1 # Adds a step to checkout the repository code
       with:
         dotnet-version: '6.0.x'
       working-directory: DotnetTemplate.Web
