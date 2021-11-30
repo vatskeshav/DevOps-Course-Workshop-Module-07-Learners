@@ -1,10 +1,21 @@
+#!groovy
 pipeline {
-    agent any
+    agent none
 
     stages {
         stage('Build') {
+            agent {
+                    docker {image 'node:17-alpine'}
+            }
             steps {
-                echo 'Building..'
+                dir('DotnetTemplate.Web') {
+                                            echo 'Building..'
+                                            sh 'node --version'
+                                            sh 'npm ci'
+                                            sh 'npm run build'
+                                            sh 'npm t'
+
+                }
             }
         }
         stage('Test') {
