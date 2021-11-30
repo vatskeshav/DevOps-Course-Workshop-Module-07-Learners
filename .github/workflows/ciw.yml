@@ -14,13 +14,19 @@ jobs:
 
 
     - name: test dotnet 
+      with:
+        dotnet-version: '6.0.x'
       run: dotnet test
 
     - name: typescript tests 
+      with:
+        dotnet-version: '6.0.x'
       working-directory: DotnetTemplate.Web
       run: npm t
 
     - name: typescript linter 
+      with:
+        dotnet-version: '6.0.x'
       working-directory: DotnetTemplate.Web
       run: npm run lint
 
