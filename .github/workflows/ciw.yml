@@ -61,3 +61,20 @@ jobs:
           # tags: assajianachro/dotnettemplate:jan251
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+name: Deploy
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      # what is akhileshns? 
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "assajis-dotnet" #Must be unique in Heroku
+          heroku_email: "keshav.vats@gmail.com"
+          usedocker: true
